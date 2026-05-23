@@ -72,7 +72,7 @@ export default function SpanishFlashcards() {
           <h1 className="text-3xl font-bold text-center">
             Spanish Flashcards
           </h1>
-          <p className="text-center text-neutral-500 text-sm">
+          <p className="text-center text-neutral-700 text-sm">
             Choose a lesson to start
           </p>
 
@@ -127,11 +127,11 @@ export default function SpanishFlashcards() {
         >
           {currentCard ? (
             <div>
-              <div className="text-xs uppercase tracking-widest text-neutral-400 mb-6">
+              <div className="text-xs uppercase tracking-widest text-neutral-600 mb-6">
                 {showAnswer ? "Answer" : "Tap to reveal"}
               </div>
 
-              <div className="text-4xl font-semibold leading-tight">
+              <div className="text-4xl font-bold leading-tight text-black">
                 {!showAnswer
                   ? direction === "en-es"
                     ? currentCard.english
@@ -142,7 +142,7 @@ export default function SpanishFlashcards() {
               </div>
             </div>
           ) : (
-            <div className="text-neutral-500">No cards found.</div>
+            <div className="text-neutral-700">No cards found.</div>
           )}
         </div>
       </div>
@@ -166,7 +166,7 @@ export default function SpanishFlashcards() {
           </button>
         </div>
 
-        <div className="flex justify-between items-center text-sm text-neutral-500">
+        <div className="flex justify-between items-center text-sm text-neutral-700">
           <span>
             {cards.length ? currentIndex + 1 : 0} / {cards.length}
           </span>
