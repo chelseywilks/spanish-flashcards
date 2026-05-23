@@ -97,7 +97,7 @@ export default function SpanishFlashcards() {
             <div>
               <h1 className="text-3xl font-bold">Spanish Flashcards</h1>
               <p className="text-neutral-500 mt-1">
-                Minimalist vocab practice for walks, coffee shops, airports, etc.
+                Vocab practice for dumb dumbs.
               </p>
             </div>
 
@@ -143,7 +143,7 @@ export default function SpanishFlashcards() {
 
         <div
           onClick={() => setShowAnswer(!showAnswer)}
-          className="bg-white rounded-[2rem] shadow-xl min-h-[420px] flex flex-col items-center justify-center text-center p-8 cursor-pointer select-none"
+          className="bg-white rounded-[2rem] shadow-xl min-h-[65vh] flex flex-col items-center justify-center text-center p-8 cursor-pointer select-none"
         >
           {currentCard ? (
             <>
@@ -173,7 +173,7 @@ export default function SpanishFlashcards() {
         <div className="bg-white rounded-3xl shadow-lg p-4 flex items-center justify-between">
           <button
             onClick={previousCard}
-            className="px-5 py-3 rounded-2xl bg-neutral-200"
+            className="px-6 py-5 text-lgrounded-2xl bg-neutral-200"
           >
             Previous
           </button>
@@ -186,7 +186,7 @@ export default function SpanishFlashcards() {
 
           <button
             onClick={nextCard}
-            className="px-5 py-3 rounded-2xl bg-black text-white"
+            className="px-6 py-5 text-lg rounded-2xl bg-black text-white"
           >
             Next
           </button>
