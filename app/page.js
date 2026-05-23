@@ -7,7 +7,7 @@ export default function SpanishFlashcards() {
     { english: 'be', spanish: 'ser / estar' },
     { english: 'house', spanish: 'casa' },
     { english: 'food', spanish: 'comida' },
-    { english: 'walk', spanish: 'caminar' },
+    { english: 'to walk', spanish: 'caminar' },
   ];
 
   const [cards, setCards] = React.useState(sampleCards);
