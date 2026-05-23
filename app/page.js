@@ -173,7 +173,7 @@ export default function SpanishFlashcards() {
 
           <button
             onClick={shuffleCards}
-            className="px-3 py-2 rounded-xl bg-neutral-200"
+            className="px-3 py-2 rounded-xl bg-neutral-200 text-black"
           >
             Shuffle
           </button>
