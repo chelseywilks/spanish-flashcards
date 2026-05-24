@@ -7,6 +7,11 @@ const LESSONS = [
   { id: "verbs", label: "Common Verbs", file: "/lessons/common-verbs.csv" },
   { id: "phrases", label: "Common Phrases", file: "/lessons/common-phrases.csv" },
   { id: "people", label: "People", file: "/lessons/people.csv" }
+  { id: "adverbs", label: "Adverbs & Adjectives", file: "/lessons/adverbs-and-adjectives.csv" },
+  { id: "colors", label: "Colors & Numbers", file: "/lessons/colors-and-numbers.csv" },
+  { id: "phrases2", label: "Common Phrases Pt. 2", file: "/lessons/common-phrases-pt-2.csv" },
+  { id: "idioms", label: "Idioms", file: "/lessons/idioms.csv" },
+  { id: "tourism", label: "Tourism", file: "/lessons/tourism.csv" }
 ];
 
 export default function SpanishFlashcards() {
