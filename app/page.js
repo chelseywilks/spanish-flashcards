@@ -22,6 +22,7 @@ export default function SpanishFlashcards() {
   const [showAnswer, setShowAnswer] = React.useState(false);
   const [direction, setDirection] = React.useState("en-es");
 
+
   async function loadLesson(file, id) {
     const res = await fetch(file);
     const text = await res.text();
@@ -44,6 +45,7 @@ export default function SpanishFlashcards() {
     }
 
     setCards(parsed);
+    setMasteredCards([]);
     setLesson(id);
     setCurrentIndex(0);
     setShowAnswer(false);
@@ -51,13 +53,13 @@ export default function SpanishFlashcards() {
 
   function nextCard() {
     setShowAnswer(false);
-    setCurrentIndex((prev) => (prev + 1) % cards.length);
+   setCurrentIndex((prev) => (prev + 1) % activeCards.length);
   }
 
   function previousCard() {
     setShowAnswer(false);
     setCurrentIndex((prev) =>
-      prev - 1 < 0 ? cards.length - 1 : prev - 1
+      prev - 1 < 0 ? activeCards.length - 1 : prev - 1
     );
   }
 
@@ -181,7 +183,7 @@ const currentCard = activeCards[currentIndex];
 
   <div className="flex justify-between items-center text-sm text-neutral-700">
     <span>
-      {cards.length ? currentIndex + 1 : 0} / {cards.length}
+      {activeCards.length ? currentIndex + 1 : 0} / {activeCards.length}
     </span>
 
     <button
@@ -198,8 +200,6 @@ const currentCard = activeCards[currentIndex];
       const cardId = `${currentCard.english}-${currentCard.spanish}`;
 
       setMasteredCards((prev) => [...prev, cardId]);
-
-      setCurrentIndex(0);
       setShowAnswer(false);
     }}
     className="w-full py-4 rounded-2xl bg-green-200 text-black active:scale-95 transition" 
