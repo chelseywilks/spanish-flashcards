@@ -17,6 +17,7 @@ const LESSONS = [
 export default function SpanishFlashcards() {
   const [lesson, setLesson] = React.useState(null);
   const [cards, setCards] = React.useState([]);
+  const [masteredCards, setMasteredCards] = React.useState([]);
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [showAnswer, setShowAnswer] = React.useState(false);
   const [direction, setDirection] = React.useState("en-es");
@@ -97,7 +98,14 @@ export default function SpanishFlashcards() {
     );
   }
 
-  const currentCard = cards[currentIndex];
+  const activeCards = cards.filter(
+  (card) =>
+    !masteredCards.includes(
+      `${card.english}-${card.spanish}`
+    )
+);
+
+const currentCard = activeCards[currentIndex];
 
   // -------------------------
   // FLASHCARD SCREEN
@@ -153,37 +161,52 @@ export default function SpanishFlashcards() {
       </div>
 
       {/* Controls (thumb-friendly) */}
-      <div className="p-4 space-y-3">
-        
-        <div className="flex justify-between items-center gap-3">
-          <button
-            onClick={previousCard}
-            className="flex-1 py-4 rounded-2xl bg-neutral-200 active:scale-95 transition"
-          >
-            Previous
-          </button>
+<div className="p-4 space-y-3">
+  
+  <div className="flex justify-between items-center gap-3">
+    <button
+      onClick={previousCard}
+      className="flex-1 py-4 rounded-2xl bg-neutral-200 text-black active:scale-95 transition"
+    >
+      Previous
+    </button>
 
-          <button
-            onClick={nextCard}
-            className="flex-1 py-4 rounded-2xl bg-black text-white active:scale-95 transition"
-          >
-            Next
-          </button>
-        </div>
+    <button
+      onClick={nextCard}
+      className="flex-1 py-4 rounded-2xl bg-black text-white active:scale-95 transition"
+    >
+      Next
+    </button>
+  </div>
 
-        <div className="flex justify-between items-center text-sm text-neutral-700">
-          <span>
-            {cards.length ? currentIndex + 1 : 0} / {cards.length}
-          </span>
+  <div className="flex justify-between items-center text-sm text-neutral-700">
+    <span>
+      {cards.length ? currentIndex + 1 : 0} / {cards.length}
+    </span>
 
-          <button
-            onClick={shuffleCards}
-            className="px-3 py-2 rounded-xl bg-neutral-200 text-black"
-          >
-            Shuffle
-          </button>
+    <button
+      onClick={shuffleCards}
+      className="px-3 py-2 rounded-xl bg-neutral-200 text-black"
+    >
+      Shuffle
+    </button>
+  </div>
+
+  {/* NEW MASTERED BUTTON */}
+  <button
+    onClick={() => {
+      const cardId = `${currentCard.english}-${currentCard.spanish}`;
+
+      setMasteredCards((prev) => [...prev, cardId]);
+
+      setCurrentIndex(0);
+      setShowAnswer(false);
+    }}
+    className="w-full py-4 rounded-2xl bg-green-200 text-black active:scale-95 transition" 
+    >
+    Mastered ✓
+  </button>
         </div>
       </div>
-    </div>
   );
 }
