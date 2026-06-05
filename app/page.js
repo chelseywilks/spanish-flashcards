@@ -21,7 +21,7 @@ const CATEGORIES = [
     lessons: [
       { id: "ser", label: "Ser", file: "/lessons/ser.csv" },
       { id: "estar", label: "Estar", file: "/lessons/estar.csv" },
-      { id: "comer", label: "Comer", file: "/lessons/comer.csv" }
+      { id: "ir", label: "Ir", file: "/lessons/ir.csv" }
     ]
   },
   {
