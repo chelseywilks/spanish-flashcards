@@ -1,20 +1,42 @@
 "use client";
 import React from "react";
 
-const LESSONS = [
-  { id: "food", label: "Food", file: "/lessons/food.csv" },
-  { id: "places", label: "Places", file: "/lessons/places.csv" },
-  { id: "verbs", label: "Common Verbs", file: "/lessons/common-verbs.csv" },
-  { id: "phrases", label: "Common Phrases", file: "/lessons/common-phrases.csv" },
-  { id: "people", label: "People", file: "/lessons/people.csv" },
-  { id: "adverbs", label: "Adverbs & Adjectives", file: "/lessons/adverbs-and-adjectives.csv" },
-  { id: "colors", label: "Colors & Numbers", file: "/lessons/colors-and-numbers.csv" },
-  { id: "phrases2", label: "Common Phrases 2", file: "/lessons/common-phrases-pt-2.csv" },
-  { id: "idioms", label: "Idioms", file: "/lessons/idioms.csv" },
-  { id: "tourism", label: "Tourism", file: "/lessons/tourism.csv" }
+const CATEGORIES = [
+  {
+    id: "vocab",
+    label: "Vocabulary",
+    lessons: [
+      { id: "food", label: "Food", file: "/lessons/food.csv" },
+      { id: "places", label: "Places", file: "/lessons/places.csv" },
+      { id: "people", label: "People", file: "/lessons/people.csv" },
+      { id: "colors-and-numbers", label: "Colors and Numbers", file: "/lessons/colors-and-numbers.csv" },
+      { id: "common-verbs", label: "Common Verbs", file: "/lessons/common-verbs.csv" },
+      { id: "adverbs-and-adjectives", label: "Adverbs and Adjectives", file: "/lessons/adverbs-and-adjectives.csv" },
+      { id: "tourism", label: "Tourism", file: "/lessons/tourism.csv" },
+    ]
+  },
+  {
+    id: "verbs",
+    label: "Verb Conjugations",
+    lessons: [
+      { id: "ser", label: "Ser", file: "/lessons/ser.csv" },
+      { id: "estar", label: "Estar", file: "/lessons/estar.csv" },
+      { id: "comer", label: "Comer", file: "/lessons/comer.csv" }
+    ]
+  },
+  {
+    id: "sentences",
+    label: "Sentence Construction",
+    lessons: [
+      { id: "phrases", label: "Common Phrases", file: "/lessons/common-phrases.csv" },
+      { id: "phrases2", label: "Common Phrases 2", file: "/lessons/common-phrases-pt-2.csv" }
+      { id: "idioms", label: "Idioms", file: "/lessons/idioms.csv" },
+    ]
+  }
 ];
 
 export default function SpanishFlashcards() {
+  const [category, setCategory] = React.useState(null);
   const [lesson, setLesson] = React.useState(null);
   const [cards, setCards] = React.useState([]);
   const [masteredCards, setMasteredCards] = React.useState([]);
@@ -50,18 +72,25 @@ export default function SpanishFlashcards() {
     setCurrentIndex(0);
     setShowAnswer(false);
   }
-
+const activeCards = cards.filter(
+  (card) =>
+    !masteredCards.includes(`${card.english}-${card.spanish}`)
+);
   function nextCard() {
-    setShowAnswer(false);
-   setCurrentIndex((prev) => (prev + 1) % activeCards.length);
-  }
+  setShowAnswer(false);
+  setCurrentIndex((prev) =>
+    activeCards.length ? (prev + 1) % activeCards.length : 0
+  );
+}
 
   function previousCard() {
-    setShowAnswer(false);
-    setCurrentIndex((prev) =>
-      prev - 1 < 0 ? activeCards.length - 1 : prev - 1
-    );
-  }
+  setShowAnswer(false);
+  setCurrentIndex((prev) =>
+    activeCards.length
+      ? (prev - 1 < 0 ? activeCards.length - 1 : prev - 1)
+      : 0
+  );
+}
 
   function shuffleCards() {
     const shuffled = [...cards].sort(() => Math.random() - 0.5);
@@ -73,41 +102,69 @@ export default function SpanishFlashcards() {
   // -------------------------
   // LESSON SELECT SCREEN
   // -------------------------
-  if (!lesson) {
-    return (
-      <div className="min-h-screen bg-neutral-100 p-4 flex items-center justify-center">
-        <div className="w-full max-w-md space-y-4">
-          <h1 className="text-3xl font-bold text-center">
-            Spanish Flashcards
-          </h1>
-          <p className="text-center text-neutral-700 text-sm">
-            Choose a lesson to start
-          </p>
+  if (!category) {
+  return (
+    <div className="min-h-screen bg-neutral-100 p-4 flex items-center justify-center">
+      <div className="w-full max-w-md space-y-4">
+        <h1 className="text-3xl font-bold text-center">
+          Spanish Flashcards
+        </h1>
 
-          <div className="grid grid-cols-2 gap-3 mt-6">
-            {LESSONS.map((l) => (
-              <button
-                key={l.id}
-                onClick={() => loadLesson(l.file, l.id)}
-                className="bg-black text-white rounded-2xl py-5 text-sm font-semibold active:scale-95 transition"
-              >
-                {l.label}
-              </button>
-            ))}
-          </div>
+        <p className="text-center text-neutral-700 text-sm">
+          Choose a category
+        </p>
+
+        <div className="grid grid-cols-1 gap-3 mt-6">
+          {CATEGORIES.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => setCategory(c)}
+              className="bg-black text-white rounded-2xl py-6 text-sm font-semibold active:scale-95 transition"
+            >
+              {c.label}
+            </button>
+          ))}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
+if (category && !lesson) {
+  return (
+    <div className="min-h-screen bg-neutral-100 p-4 flex items-center justify-center">
+      <div className="w-full max-w-md space-y-4">
+       <button
+  onClick={() => setCategory(null)}
+  className="text-sm px-3 py-2 rounded-xl bg-neutral-200"
+>
+  ← Categories
+</button>
 
-  const activeCards = cards.filter(
-  (card) =>
-    !masteredCards.includes(
-      `${card.english}-${card.spanish}`
-    )
-);
+        <h1 className="text-2xl font-bold text-center">
+          {category.label}
+        </h1>
 
-const currentCard = activeCards[currentIndex];
+        <p className="text-center text-neutral-700 text-sm">
+          Choose a lesson
+        </p>
+
+        <div className="grid grid-cols-2 gap-3 mt-6">
+          {category.lessons.map((l) => (
+            <button
+              key={l.id}
+              onClick={() => loadLesson(l.file, l.id)}
+              className="bg-black text-white rounded-2xl py-5 text-sm font-semibold active:scale-95 transition"
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+const currentCard =
+  activeCards.length > 0 ? activeCards[currentIndex] : null;
 
   // -------------------------
   // FLASHCARD SCREEN
@@ -117,13 +174,21 @@ const currentCard = activeCards[currentIndex];
       
       {/* Header */}
       <div className="p-4 flex justify-between items-center">
-        <button
-          onClick={() => setLesson(null)}
-          className="text-sm px-3 py-2 rounded-xl bg-neutral-200"
-        >
-          ← Lessons
-        </button>
-
+       <button
+  onClick={() => {
+    if (lesson) {
+      setLesson(null);
+      setCards([]);
+      setCurrentIndex(0);
+      setShowAnswer(false);
+    } else {
+      setCategory(null);
+    }
+  }}
+  className="text-sm px-3 py-2 rounded-xl bg-neutral-200"
+>
+  {lesson ? "← Lessons" : "← Categories"}
+</button>
         <button
           onClick={() =>
             setDirection(direction === "en-es" ? "es-en" : "en-es")
