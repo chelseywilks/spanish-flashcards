@@ -19,8 +19,8 @@ const CATEGORIES = [
     id: "verbs",
     label: "Verb Conjugations",
     lessons: [
-      { id: "ser", label: "Ser", file: "/lessons/ser.csv" },
-      { id: "estar", label: "Estar", file: "/lessons/estar.csv" },
+      { id: "ser", label: "Ser (to be)", file: "/lessons/ser.csv" },
+      { id: "estar", label: "Estar (to be)", file: "/lessons/estar.csv" },
       { id: "ir", label: "Ir", file: "/lessons/ir.csv" },
     ]
   },
