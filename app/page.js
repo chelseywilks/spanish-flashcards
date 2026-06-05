@@ -21,7 +21,7 @@ const CATEGORIES = [
     lessons: [
       { id: "ser", label: "Ser", file: "/lessons/ser.csv" },
       { id: "estar", label: "Estar", file: "/lessons/estar.csv" },
-      { id: "ir", label: "Ir", file: "/lessons/ir.csv" }
+      { id: "ir", label: "Ir", file: "/lessons/ir.csv" },
     ]
   },
   {
@@ -29,7 +29,7 @@ const CATEGORIES = [
     label: "Sentence Construction",
     lessons: [
       { id: "phrases", label: "Common Phrases", file: "/lessons/common-phrases.csv" },
-      { id: "phrases2", label: "Common Phrases 2", file: "/lessons/common-phrases-pt-2.csv" }
+      { id: "phrases2", label: "Common Phrases 2", file: "/lessons/common-phrases-pt-2.csv" },
       { id: "idioms", label: "Idioms", file: "/lessons/idioms.csv" },
     ]
   }
