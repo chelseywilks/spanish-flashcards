@@ -11,12 +11,12 @@ Driveway,El camino de entrada
 Parking lot,El estacionamiento
 Garage,El garaje
 House,La casa
-Room,La habitación
-Bathroom,El baño
-Bank,El Banco
+Bedroom/enclosed room,La habitación
+Living room,La sala
+Sidewalk,La acera
 Doctor's office,El consultorio del médico
-Pharmacy,La farmacia
-Hospital,El hospital
+Grass/Lawn,El césped
+Garden,El jardín
 Clinic,La clínica
 Office,La Oficina
 Dental office,El consultorio dental
@@ -24,7 +24,7 @@ Shopping mall,El centro comercial
 Corner store,La tienda de la esquina
 Thrift store,La tienda de segunda mano
 Bakery,La panadería
-Church,La Iglesia
+Nearby/next,Próximo/a
 Car,El coche / El auto
 Bus,El autobús
 Truck,El camión
@@ -36,14 +36,14 @@ City,La ciudad
 Over there,Allí
 Come here,Ven aquí
 Where is that,Donde es eso
-Library,La biblioteca
+Museum,El museo
 City hall,El ayuntamiento
 Police station,La comisaría (de policía)
 Building,El edificio
 Gas station,La gasolinera
 Cocktail bar,El bar de cócteles
 Book store,La librería
-Supermarket,El supermercado
+Market,El mercado
 Traffic light,El semáforo
 Stop sign,La señal de alto
 Theater,El teatro
