@@ -21,7 +21,9 @@ const CATEGORIES = [
     lessons: [
       { id: "ser", label: "Ser (to be)", file: "/lessons/ser.csv" },
       { id: "estar", label: "Estar (to be)", file: "/lessons/estar.csv" },
-      { id: "ir", label: "Ir", file: "/lessons/ir.csv" },
+      { id: "ir", label: "Ir (to go)", file: "/lessons/ir.csv" },
+      { id: "tener", label: "Tener (to have)", file: "/lessons/tener.csv" },
+      { id: "hacer", label: "Hacer (to do/make)", file: "/lessons/hacer.csv" },
     ]
   },
   {
