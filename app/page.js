@@ -11,6 +11,7 @@ const CATEGORIES = [
       { id: "people", label: "People", file: "/lessons/people.csv" },
       { id: "colors-and-numbers", label: "Colors and Numbers", file: "/lessons/colors-and-numbers.csv" },
       { id: "common-verbs", label: "Common Verbs", file: "/lessons/common-verbs.csv" },
+      { id: "common-verbs-pt-2", label: "Common Verbs 2", file: "/lessons/common-verbs-pt-2.csv" },
       { id: "adverbs-and-adjectives", label: "Adverbs and Adjectives", file: "/lessons/adverbs-and-adjectives.csv" },
       { id: "tourism", label: "Tourism", file: "/lessons/tourism.csv" },
     ]
