@@ -14,6 +14,7 @@ const CATEGORIES = [
       { id: "common-verbs-pt-2", label: "Common Verbs 2", file: "/lessons/common-verbs-pt-2.csv" },
       { id: "adverbs-and-adjectives", label: "Adverbs and Adjectives", file: "/lessons/adverbs-and-adjectives.csv" },
       { id: "tourism", label: "Tourism", file: "/lessons/tourism.csv" },
+      { id: "potpourri", label: "Potpourri", file: "/lessons/potpourri.csv" },
     ]
   },
   {
